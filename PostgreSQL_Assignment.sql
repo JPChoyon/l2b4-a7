@@ -88,4 +88,8 @@ WHERE published_year < 2000;
 
 -- delete customers who did not place any orders 
 DELETE FROM customers 
-WHERE id NOT IN (SELECT DISTINCT customer_id FROM orders);
+WHERE id NOT IN (
+    SELECT customer_id 
+    FROM orders 
+    WHERE customer_id IS NOT NULL
+);
