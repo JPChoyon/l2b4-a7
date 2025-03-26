@@ -75,7 +75,7 @@ SELECT customers.name, COUNT(orders.id) AS orders_count
 FROM customers
 JOIN orders ON customers.id = orders.customer_id
 GROUP BY customers.name
-HAVING orders_count > 1;
+HAVING COUNT(orders.id) > 1;
 
 -- average price of books 
 SELECT ROUND(AVG(price), 2) AS avg_book_price 
